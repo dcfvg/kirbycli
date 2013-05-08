@@ -35,4 +35,6 @@ mkdir thumbs
 chmod -R 747 thumbs
 
 ls -la
+
+git add -A && git commit -m "auto install completed"
 echo "ok !"
