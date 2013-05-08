@@ -1,0 +1,38 @@
+# kirby-install
+
+dir=$1
+user=$2
+dirext=ext
+
+git clone https://github.com/bastianallgeier/kirbycms.git $dir
+
+cd $dir
+
+rm *.mdown
+
+# init panel
+sed -i ".bak" '/panel/d' .gitignore # remove /panel from .gitignore
+git submodule add https://github.com/bastianallgeier/kirbycms-panel.git panel
+cp -r panel/defaults site/panel
+
+# init main user
+echo "set main user : $user"
+sed "s/admin/$user/g" site/panel/accounts/admin.php > site/panel/accounts/$user.php
+rm site/panel/accounts/admin.php
+
+# init extension
+git submodule add https://github.com/bastianallgeier/kirbycms-extensions.git $dirext
+
+# install extentions
+echo "copy fields, plugins and templates"
+cp -r $dirext/fields/* panel/fields
+cp -r $dirext/plugins/* site/plugins
+cp -r $dirext/templates/* site/templates
+
+# create thumbs folder
+echo "creating thumbs folder"
+mkdir thumbs
+chmod -R 747 thumbs
+
+ls -la
+echo "ok !"
