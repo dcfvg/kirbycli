@@ -6,12 +6,19 @@
     - kirby extension
     
   2. edit setup
-  3. pre-process content to destination
+  3. process precontent folder
     - folder name
     - filename
     - file conversion
+    
+# Dependencies
 
-# add pre-content folder management
+- git
+
+
+# TODO
+
+## precontent folder management
 
 - declare content folder to import
 

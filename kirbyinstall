@@ -1,5 +1,5 @@
 # kirby-install
-# USAGE: kirbyinstall [-u user] [-e txtExt] content destination
+# USAGE: kirbyinstall [-u user] [-e txtExt] precontent destination
 
 destination=$1  # destination folder
 user=$2         # root username
