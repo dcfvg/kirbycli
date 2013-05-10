@@ -1,12 +1,13 @@
 # kirby-install
+# USAGE: kirbyinstall [-u user] [-e txtExt] content destination
 
-dir=$1
-user=$2
-dirext=ext
+destination=$1  # destination folder
+user=$2         # root username
+dirext=ext      # extension directory
 
-git clone https://github.com/bastianallgeier/kirbycms.git $dir
+git clone https://github.com/bastianallgeier/kirbycms.git $destination
 
-cd $dir
+cd $destination
 
 rm *.mdown
 
