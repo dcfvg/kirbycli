@@ -1,4 +1,4 @@
-# kirby-install
+# kirby-cli
  
   1. clone and install from github
     - kirby
@@ -15,6 +15,7 @@
 
 - git
 - imagemagick
+- detox
 
 # TODO
 ## precontent folder management
