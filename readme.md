@@ -20,11 +20,6 @@
 # TODO
 ## precontent folder management
 
-- declare content folder to import
-
-- scan dir recursively
-  - sanitize filename
-  - check if first part of folder name is a number with à "-"
   - rename folder with pad ( %04d )    
     - file processing 
         - mogrify large image ( < 2500 px )
@@ -32,6 +27,3 @@
         - mp3   > soundcloud
         - jpeg  > Doxie ?    > png
         - map   > tuiles     > gmaps
-
-  - edit content.file.extension to .md
-  - create default.md files
