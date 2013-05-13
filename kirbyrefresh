@@ -25,7 +25,14 @@ function publishdir {
   done
 }
 
-detox -vr content
+
+#detox -vr content
 
 echo "- publish dir"
-publishdir content/
+#publishdir content/
+
+find content/*/ -type d -depth | while read file 
+do 
+  NEWNAME=$(dirname "$file")/"01-"$(basename "$file"); mv "$file" "$NEWNAME"; 
+done
+
