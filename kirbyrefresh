@@ -18,9 +18,10 @@ function publishdir {
   done
 }
 
+echo "- sanitize filenames"
 detox -vr content
 
-echo "- publish dir"
+echo "- publish allcontent"
 publishdir content/
 
 
