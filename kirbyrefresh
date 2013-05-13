@@ -2,38 +2,25 @@
 # USAGE: kirbyrefresh user
 
 function publishdir {
-  for dir in `find $1 -type d | grep -e '[0-9][0-9][-].' -v |  grep -e 'home' -v | grep -m 2 -e 'error' -v ` 
+  find $1/*/ -type d -depth | while read dir 
   do
-    parent=$(basename $(dirname $dir))
     dirname=$(basename $dir)
+
     id=${dirname:0:2}
-    sep=${dirname:2:1}    
-    
-    if [ $dirname != "content" ]
-      then
-      #echo $dirname
-      dirnew="$parent/01-$dirname/"
-      #mv $dir $dirnew
-      echo "+ $dirnew"
-      publishdir $dir
-      
-    else
-      #publishdir $dir
-      echo "."
+    sep=${dirname:2:1}
+
+    if ! [[ "$id" =~ ^[0-9]+$ ]] && ! [[ "$sep" = "-" ]] && [[ "$dirname" != "home" ]]  && [[ "$dirname" != "error" ]]
+     then 
+      newname=$(dirname "$dir")/"01-"$dirname
+      mv "$dir" "$newname";
+      echo "+$newname"
     fi
-    
   done
 }
 
-
-#detox -vr content
+detox -vr content
 
 echo "- publish dir"
-#publishdir content/
+publishdir content/
 
-find content/*/ -type d -depth | while read dir 
-do 
-  newname=$(dirname "$dir")/"01-"$(basename "$dir"); mv "$dir" "$newname";
-  echo $newname
-done
 
