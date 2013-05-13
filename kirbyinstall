@@ -42,12 +42,13 @@ cp -r $dirext/fields/* panel/fields
 cp -r $dirext/plugins/* site/plugins
 cp -r $dirext/templates/* site/templates
 
-# create thumbs folder
+# thumbs
 echo "creating thumbs folder"
 mkdir thumbs
 chmod -R 747 thumbs
 
-# copy pre-content folder 
+# content integration
+echo "copy pre-content folder" 
 cp -r ../$precontent/* content/
 
 ls -la
