@@ -1,0 +1,31 @@
+# kirby-refresh
+# USAGE: kirbyrefresh user
+
+echo "sanitize filename"
+detox -vr content
+
+function publishdir {
+  echo "pb $1"
+  for dir in `ls -d $1*/`
+  do
+    parent=$(basename $(dirname $dir))
+    dirname=$(basename $dir)
+    id=${dirname:0:2}
+    sep=${dirname:2:1}
+
+    if [[ "$id" =~ ^[0-9]+$ ]] && [[ "$sep" = "-" ]]
+      then
+        #echo "- $dir"
+        publishdir $dir
+        
+      else
+        dirnew="$parent/01-$dirname/"
+        ##echo "+ $dir > $dirnew"
+        mv $dir $dirnew
+        publishdir $dirnew
+    fi
+    
+  done
+}
+
+publishdir content/
