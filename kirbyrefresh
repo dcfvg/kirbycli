@@ -31,8 +31,9 @@ function publishdir {
 echo "- publish dir"
 #publishdir content/
 
-find content/*/ -type d -depth | while read file 
+find content/*/ -type d -depth | while read dir 
 do 
-  NEWNAME=$(dirname "$file")/"01-"$(basename "$file"); mv "$file" "$NEWNAME"; 
+  newname=$(dirname "$dir")/"01-"$(basename "$dir"); mv "$dir" "$newname";
+  echo $newname
 done
 
