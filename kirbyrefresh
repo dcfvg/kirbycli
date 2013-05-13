@@ -1,31 +1,31 @@
 # kirby-refresh
 # USAGE: kirbyrefresh user
 
-echo "sanitize filename"
-detox -vr content
-
 function publishdir {
-  echo "pb $1"
-  for dir in `ls -d $1*/`
+  for dir in `find $1 -type d | grep -e '[0-9][0-9][-].' -v |  grep -e 'home' -v | grep -m 2 -e 'error' -v ` 
   do
     parent=$(basename $(dirname $dir))
     dirname=$(basename $dir)
     id=${dirname:0:2}
-    sep=${dirname:2:1}
-
-    if [[ "$id" =~ ^[0-9]+$ ]] && [[ "$sep" = "-" ]]
+    sep=${dirname:2:1}    
+    
+    if [ $dirname != "content" ]
       then
-        #echo "- $dir"
-        publishdir $dir
-        
-      else
-        dirnew="$parent/01-$dirname/"
-        ##echo "+ $dir > $dirnew"
-        mv $dir $dirnew
-        publishdir $dirnew
+      #echo $dirname
+      dirnew="$parent/01-$dirname/"
+      #mv $dir $dirnew
+      echo "+ $dirnew"
+      publishdir $dir
+      
+    else
+      #publishdir $dir
+      echo "."
     fi
     
   done
 }
 
+detox -vr content
+
+echo "- publish dir"
 publishdir content/
