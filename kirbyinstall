@@ -21,7 +21,8 @@ rm *.mdown
 
 # update .gitignore
 sed -i ".bak" '/panel/d' .gitignore  # remove /panel from .gitignore
-echo "content/" >> .gitignore
+echo "/content" >> .gitignore
+echo "/thumbs" >> .gitignore
 
 # init panel
 
