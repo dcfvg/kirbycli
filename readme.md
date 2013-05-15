@@ -1,29 +1,32 @@
-# kirby-cli
+
+A command line interface for kirby ( http://getkirby.com ) 
+
+# kirbycli
  
-  1. clone and install from github
-    - kirby
-    - kirby panel
-    - kirby extension
-    
-  2. edit setup
-  3. process precontent folder
-    - folder name
-    - filename
-    - file conversion
-    
+1. install and configure a basic kirby 
+- kirby
+- kirby panel
+- kirby extension
+- admin account 
+	- git repos
+	
+2. content bulk operation 
+- publish any folder recursively
+- bulk templates type update 
+
+3. refresh content
+- convert to web-readable
+		- multipage pdf
+		- eps/ai
+		- tiff
+		- video as thumbnails
+		- .ttf .doc
+
+- send to web service ( vimeo, souncloud ) 
+- images processing based on exif data ( Doxie )
+- generate tiles for inlines maps
+
 # Dependencies
-
-- git
-- imagemagick
-- detox
-- ffmpeg
-
-# TODO
-## precontent folder management
-  
-  - file processing 
-    - mogrify large image ( < 2500 px )
-    - mov   > ffmpeg     > vimeo
-    - mp3   > soundcloud
-    - jpeg  > Doxie ?    > png
-    - map   > tuiles     > gmaps
+- git					( code versionning		 )
+- imagemagick	( image processing 	 ) 
+- detox				( filename sanitizer )
