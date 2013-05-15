@@ -4,17 +4,20 @@ A command line interface for kirby ( http://getkirby.com )
 # kirbycli
  
 1. install and configure a basic kirby 
+
 - kirby
 - kirby panel
 - kirby extension
 - admin account 
 	- git repos
 	
-2. content bulk operation 
+2. content bulk operation
+
 - publish any folder recursively
 - bulk templates type update 
 
 3. refresh content
+
 - convert to web-readable
 		- multipage pdf
 		- eps/ai
