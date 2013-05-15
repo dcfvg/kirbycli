@@ -1,29 +1,27 @@
-
-A command line interface for kirby ( http://getkirby.com ) 
-
 # kirbycli
- 
-1. install and configure a basic kirby 
+*A command line interface for kirby ( http://getkirby.com )*
+
+## install and configure kirby
 
 - kirby
 - kirby panel
 - kirby extension
 - admin account 
-	- git repos
+  - git repos
 	
-2. content bulk operation
+## content bulk operation
 
 - publish any folder recursively
 - bulk templates type update 
 
-3. refresh content
+## refresh content
 
 - convert to web-readable
-		- multipage pdf
-		- eps/ai
-		- tiff
-		- video as thumbnails
-		- .ttf .doc
+	- multipage pdf
+	- eps/ai
+	- tiff
+	- video as thumbnails
+	- .ttf .doc
 
 - send to web service ( vimeo, souncloud ) 
 - images processing based on exif data ( Doxie )
