@@ -16,14 +16,14 @@
 - git
 - imagemagick
 - detox
+- ffmpeg
 
 # TODO
 ## precontent folder management
-
-  - rename folder with pad ( %04d )    
-    - file processing 
-        - mogrify large image ( < 2500 px )
-        - mov   > ffmpeg     > vimeo
-        - mp3   > soundcloud
-        - jpeg  > Doxie ?    > png
-        - map   > tuiles     > gmaps
+  
+  - file processing 
+    - mogrify large image ( < 2500 px )
+    - mov   > ffmpeg     > vimeo
+    - mp3   > soundcloud
+    - jpeg  > Doxie ?    > png
+    - map   > tuiles     > gmaps
