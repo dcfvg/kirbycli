@@ -11,7 +11,7 @@ function publishdir {
 
     if ! [[ "$id" =~ ^[0-9]+$ ]] && ! [[ "$sep" = "-" ]] && [[ "$dirname" != "home" ]]  && [[ "$dirname" != "error" ]]
      then 
-      newname=$(dirname "$dir")/"01-"$dirname
+      newname=$(dirname "$dir")/"00-"$dirname
       mv "$dir" "$newname";
       echo "+$newname"
       
