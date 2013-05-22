@@ -56,3 +56,5 @@ ls -la
 
 git add -A && git commit -m "auto install with $precontent as $destination (user:$user)"
 echo "ok !"
+
+gittower --add $(pwd)
