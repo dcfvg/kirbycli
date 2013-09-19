@@ -1,31 +1,40 @@
 # kirbycli
 *A command line interface for kirby ( http://getkirby.com )*
 
-## install and configure kirby
+- the cli can be launch on local machine on online
+
+## dev
+### install and configure kirby
 
 - kirby
 - kirby panel
 - kirby extension
 - admin account 
   - git repos
-	
-## content bulk operation
+
+## content management
+### bulk operation
 
 - publish any folder recursively
-- bulk templates type update 
+- bulk folder type (template/blueprint) update
 
-## refresh content
+### refresh content
+## File conversion
+*auto web-readable version and thumbnails*
 
-- convert to web-readable
-	- multipage pdf
-	- eps/ai
-	- tiff
-	- video as thumbnails
-	- .ttf .doc
+- image (tiff, psd, raw)
+- video (jpg every 10 sec.) 
+	- pdf + multipage
+	- text file (.ttf, .doc, .md)
+- autofill file description with exit metadata
 
-- send to web service ( vimeo, souncloud ) 
-- images processing based on exif data ( Doxie )
-- generate tiles for inlines maps
+## convert and send to web service
+*original media replaced by .webservice file*
+
+- vimeo
+- souncloud
+
+- images processing based on exif data (Doxie)
 
 # Dependencies
 - git					( code versionning		 )
