@@ -39,8 +39,8 @@ cp -r $dirext/fields/* panel/fields
 cp -r $dirext/plugins/* site/plugins
 cp -r $dirext/templates/* site/templates
 
-rm -r /site/plugins/email
-
+rm -r site/plugins/email/
+rm -r site/plugins/sublimevideo/
 # thumbs
 echo "creating thumbs folder"
 mkdir thumbs
