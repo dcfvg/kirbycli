@@ -4,13 +4,13 @@ home="/root/"
 
 read -p "What is the Server Name ?" servername
 
-vhost="
+vhost='
 <VirtualHost *:80>
-	DocumentRoot $htdocs$servername
-	ErrorLog ${APACHE_LOG_DIR}/$servername-error.log
-  CustomLog ${APACHE_LOG_DIR}/$servername-access.log combined
-  ServerName $servername
-</VirtualHost>"
+	DocumentRoot '$htdocs$servername'
+	ErrorLog ${APACHE_LOG_DIR}/'$servername'-error.log
+  CustomLog ${APACHE_LOG_DIR}/'$servername'-access.log combined
+  ServerName '$servername'
+</VirtualHost>'
 
 echo $vhost
 
