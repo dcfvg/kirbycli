@@ -1,0 +1,35 @@
+htdocs="/var/www/"
+vhostsPath="/etc/apache2/sites-enabled/"
+home="/root/"
+
+read -p "What is the Server Name ?" servername
+
+vhost="
+<VirtualHost *:80>
+	DocumentRoot $htdocs$servername
+	ErrorLog ${APACHE_LOG_DIR}/$servername-error.log
+  CustomLog ${APACHE_LOG_DIR}/$servername-access.log combined
+  ServerName $servername
+</VirtualHost>"
+
+echo $vhost
+
+read -p "Ready ?" ok
+
+shareddir=$home"Dropbox/k-$servername/"
+
+dropbox stop
+dropbox status
+
+./kirbyinstall $htdocs$servername ${servername:0:10}
+mkdir -v $shareddir
+
+echo "create"$vhostsPath$servername".conf"
+echo $vhost >> $vhostsPath$servername".conf"
+
+ln -sv $htdocs$servername"/content" $shareddir"content"
+
+apachectl restart
+
+dropbox start
+dropbox status

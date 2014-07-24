@@ -1,23 +1,18 @@
 # kirby-install
-# USAGE: kirbyinstall [-u user] [-e txtExt] precontent destination user
 
-precontent=$1          # precontent folder
-destination=$2         # destination folder
-user=$3                # root username
+destination=$1         # destination folder
+user=$2                # root username
 dirext=ext             # extension directory
 
 echo "$precontent as $destination"
 echo "user : $user"
 echo "-"
 
-rm -rf $destination    # for dev only
-
 git clone https://github.com/bastianallgeier/kirbycms.git $destination
 
 cd $destination
 
 rm *.mdown
-
 
 # update .gitignore
 sed -i ".bak" '/panel/d' .gitignore  # remove /panel from .gitignore
@@ -48,13 +43,7 @@ echo "creating thumbs folder"
 mkdir thumbs
 chmod -R 747 thumbs
 
-# content integration
-echo "copy pre-content folder" 
-cp -r ../$precontent/* content/
-
 ls -la
 
-git add -A && git commit -m "auto install with $precontent as $destination (user:$user)"
+git add -A && git commit -m "auto install with $precontent as $destination"
 echo "ok !"
-
-gittower --add $(pwd)
