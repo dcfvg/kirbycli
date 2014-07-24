@@ -16,7 +16,8 @@ cd $destination
 rm *.mdown
 
 # update .gitignore
-sed -i ".bak" '/panel/d' .gitignore  # remove /panel from .gitignore
+cp .gitignore .gitignore.bak
+sed -i "/panel/d" .gitignore  # remove /panel from .gitignore
 echo "/content" >> .gitignore
 echo "/thumbs" >> .gitignore
 
