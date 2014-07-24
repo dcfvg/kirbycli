@@ -1,3 +1,5 @@
+#!/bin/bash
+
 htdocs="/var/www/"
 vhostsPath="/etc/apache2/sites-enabled/"
 home="/root/"
