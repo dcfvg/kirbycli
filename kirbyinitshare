@@ -14,7 +14,7 @@ vhost='
   ServerName '$servername'
 </VirtualHost>'
 
-echo $vhost
+echo "$vhost"
 
 read -p "Ready ?" ok
 
@@ -27,7 +27,7 @@ dropbox status
 mkdir -v $shareddir
 
 echo "create"$vhostsPath$servername".conf"
-echo $vhost >> $vhostsPath$servername".conf"
+echo "$vhost" > $vhostsPath$servername".conf"
 
 ln -sv $htdocs$servername"/content" $shareddir"content"
 
