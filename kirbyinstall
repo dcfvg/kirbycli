@@ -42,6 +42,8 @@ cp -r $dirext/templates/* site/templates
 
 rm -r site/plugins/email/
 rm -r site/plugins/sublimevideo/
+rm -r site/plugins/resrc/
+
 # thumbs
 echo "creating thumbs folder"
 mkdir thumbs
