@@ -16,13 +16,12 @@ cd $destination
 rm *.mdown
 
 # update .gitignore
-cp .gitignore .gitignore.bak
-sed -i "/panel/d" .gitignore  # remove /panel from .gitignore
-echo "/content" >> .gitignore
-echo "/thumbs" >> .gitignore
+# cp .gitignore .gitignore.bak
+sed -i.bak "s/panel\///g" .gitignore
+echo "/content" >> ".gitignore"
+echo "/thumbs" >> ".gitignore"
 
 # init panel
-
 git submodule add https://github.com/bastianallgeier/kirbycms-panel.git panel
 cp -r panel/defaults site/panel
 
@@ -34,15 +33,23 @@ rm site/panel/accounts/admin.php
 # init extension
 git submodule add https://github.com/bastianallgeier/kirbycms-extensions.git $dirext
 
+# add jquery
+mkdir -vp "assets/js/"
+wget http://code.jquery.com/jquery-2.1.1.min.js -O "assets/js/jquery.js"
+
+# add bootstrap
+mkdir -vp "assets/libraries/"
+git submodule add https://github.com/twbs/bootstrap.git "assets/libraries/bootstrap/"
+
 # install extentions
 echo "copy fields, plugins and templates"
-cp -r $dirext/fields/* panel/fields
-cp -r $dirext/plugins/* site/plugins
-cp -r $dirext/templates/* site/templates
+cp -vr $dirext/fields/* panel/fields
+cp -vr $dirext/plugins/* site/plugins
+cp -vr $dirext/templates/* site/templates
 
-rm -r site/plugins/email/
-rm -r site/plugins/sublimevideo/
-rm -r site/plugins/resrc/
+rm -vr site/plugins/email/
+rm -vr site/plugins/sublimevideo/
+rm -vr site/plugins/resrc/
 
 # thumbs
 echo "creating thumbs folder"
