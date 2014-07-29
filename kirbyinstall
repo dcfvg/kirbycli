@@ -12,11 +12,9 @@ echo "-"
 git clone https://github.com/bastianallgeier/kirbycms.git $destination
 
 cd $destination
-
 rm *.mdown
 
 # update .gitignore
-# cp .gitignore .gitignore.bak
 sed -i.bak "s/panel\///g" .gitignore
 echo "/content" >> ".gitignore"
 echo "/thumbs" >> ".gitignore"
@@ -30,32 +28,52 @@ echo "set main user : $user"
 sed "s/admin/$user/g" site/panel/accounts/admin.php > site/panel/accounts/$user.php
 rm site/panel/accounts/admin.php
 
-# init extension
-git submodule add https://github.com/bastianallgeier/kirbycms-extensions.git $dirext
+# install kirby extension
+read -p "Install all fields, plugins and templates ?" choice
+case "$choice" in 
+  y|Y ) 
+	git submodule add https://github.com/bastianallgeier/kirbycms-extensions.git $dirext
+
+	cp -vr $dirext/fields/* panel/fields
+	cp -vr $dirext/plugins/* site/plugins
+	cp -vr $dirext/templates/* site/templates
+
+	rm -vr site/plugins/email/
+	rm -vr site/plugins/sublimevideo/
+	rm -vr site/plugins/resrc/
+	
+	echo "creating thumbs folder"
+	mkdir thumbs
+	chmod -R 747 thumbs
+
+	;;
+  n|N ) echo "continue";;
+  * ) echo "invalid";;
+esac
 
 # add jquery
-mkdir -vp "assets/js/"
-wget http://code.jquery.com/jquery-2.1.1.min.js -O "assets/js/jquery.js"
+read -p "Install jquery (y/n)?" choice
+case "$choice" in 
+  y|Y ) 
+	mkdir -vp "assets/js/"
+	wget http://code.jquery.com/jquery-2.1.1.min.js -O "assets/js/jquery.js"
+	;;
+  n|N ) echo "continue";;
+  * ) echo "invalid";;
+esac
 
 # add bootstrap
-mkdir -vp "assets/libraries/"
-git submodule add https://github.com/twbs/bootstrap.git "assets/libraries/bootstrap/"
-
-# install extentions
-echo "copy fields, plugins and templates"
-cp -vr $dirext/fields/* panel/fields
-cp -vr $dirext/plugins/* site/plugins
-cp -vr $dirext/templates/* site/templates
-
-rm -vr site/plugins/email/
-rm -vr site/plugins/sublimevideo/
-rm -vr site/plugins/resrc/
+read -p "Install Bootstrap css framework (y/n)?" choice
+case "$choice" in
+  y|Y ) 
+		mkdir -vp "assets/libraries/"
+		git submodule add https://github.com/twbs/bootstrap.git "assets/libraries/bootstrap/"
+	;;
+  n|N ) echo "continue";;
+  * ) echo "invalid";;
+esac
 
 # thumbs
-echo "creating thumbs folder"
-mkdir thumbs
-chmod -R 747 thumbs
-
 ls -la
 
 git add -A && git commit -m "auto install with $precontent as $destination"

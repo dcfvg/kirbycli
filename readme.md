@@ -33,7 +33,6 @@
 
 - vimeo
 - souncloud
-
 - images processing based on exif data (Doxie)
 
 # Dependencies
