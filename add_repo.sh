@@ -5,5 +5,9 @@ source kirbycli
 
 for site in `find $path  -maxdepth 1 -type d `
 do
-	echo $(basename $site)
+	servername=$(basename $site)
+
+	if [ ! -d $repos$servername".git" ]; then
+		echo "initProdRepo $servername"
+	fi
 done
