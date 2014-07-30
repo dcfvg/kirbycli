@@ -1,41 +1,22 @@
 # kirbycli
-*A command line interface for kirby ( http://getkirby.com )*
+*A small command line interface made of shell scripts for [kirbycms](http://getkirby.com)*
 
-- the cli can be launch on local machine on online
+_kirbycli_ can be launch on local machine or on online private server. It's not very clean and generic at the moment but it may help you to write your own scripts.
 
-## dev
-### install and configure kirby
+( )
 
-- kirby
-- kirby panel
-- kirby extension
-- admin account 
-  - git repos
+# features 
 
-## content management
-### bulk operation
+- install kirby
+- install panel
+- install fields, plugins and templates
+- clone few libraries (jquery, bootstrap)
+- create admin account
 
+- create apache vhost 
+- create git bare repos to push online
+- create Dropbox share folder
+
+### misc
 - publish any folder recursively
-- bulk folder type (template/blueprint) update
 
-### refresh content
-## File conversion
-*auto web-readable version and thumbnails*
-
-- image (tiff, psd, raw)
-- video (jpg every 10 sec.) 
-	- pdf + multipage
-	- text file (.ttf, .doc, .md)
-- autofill file description with exit metadata
-
-## convert and send to web service
-*original media replaced by .webservice file*
-
-- vimeo
-- souncloud
-- images processing based on exif data (Doxie)
-
-# Dependencies
-- git					( code versionning		 )
-- imagemagick	( image processing 	 ) 
-- detox				( filename sanitizer )
