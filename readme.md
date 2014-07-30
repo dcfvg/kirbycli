@@ -1,7 +1,10 @@
 # kirbycli
-*A small command line interface made of shell scripts for [kirbycms](http://getkirby.com)*
+**A small command line interface made of shell scripts for [kirbycms](http://getkirby.com)**
 
-_kirbycli_ can be launch on local machine or on online private server. It's not very clean and generic at the moment but it may help you to write your own scripts.
+
+
+1. **kirbycli** can be helpfull for fast installation (local or online), deployment and batch content processing of kirby instances.
+3. **kirbycli** is not clean, stable and generic for now but it may help you to write your own scripts.
 
 # features 
 
