@@ -3,7 +3,7 @@
 path=$1
 source kirbycli
 
-for site in `find $path -type d`
+for site in `find $path  -maxdepth 1 -type d `
 do
-	echo $site
+	echo $(basename $site)
 done
