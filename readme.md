@@ -3,8 +3,6 @@
 
 _kirbycli_ can be launch on local machine or on online private server. It's not very clean and generic at the moment but it may help you to write your own scripts.
 
-( )
-
 # features 
 
 - install kirby
@@ -12,11 +10,11 @@ _kirbycli_ can be launch on local machine or on online private server. It's not 
 - install fields, plugins and templates
 - clone few libraries (jquery, bootstrap)
 - create admin account
-
+****
 - create apache vhost 
 - create git bare repos to push online
 - create Dropbox share folder
+****
 
-### misc
 - publish any folder recursively
 
