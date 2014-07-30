@@ -1,1 +1,71 @@
 # kirby cli
+
+htdocs="/var/www/"
+repos="/var/repo/"
+vhostsPath="/etc/apache2/sites-enabled/"
+home="/root/"
+
+function initProdRepo {
+	servername=$1
+
+	mkdir -vp $repos$servername".git"
+	git init --bare $repos$servername".git"
+
+	hook='#!/bin/sh
+	git --work-tree=/var/www/'$servername' --git-dir=/var/repo/'$servername'.git checkout -f'
+	
+	hook_path=$repos$servername".git/hooks/post-receive"
+
+	echo "$hook" > $hook_path
+	chmod +x $hook_path
+
+	echo $repos$servername".git ready !"
+}
+function createVhost {
+	servername=$1
+
+	vhost='
+	<VirtualHost *:80>
+		DocumentRoot '$htdocs$servername'
+		ErrorLog ${APACHE_LOG_DIR}/'$servername'-error.log
+	  CustomLog ${APACHE_LOG_DIR}/'$servername'-access.log combined
+	  ServerName '$servername'
+	</VirtualHost>'
+	echo "$vhost" > $vhostsPath$servername".conf"
+
+	apachectl restart
+}
+function createSharedDir {
+	servername=$1
+
+	dropbox stop
+	dropbox status
+
+	shareddir=$home"Dropbox/k-$servername/"
+
+	mkdir -v $shareddir
+	ln -sv $htdocs$servername"/content" $shareddir"content"
+
+	dropbox start
+	dropbox status
+}
+function publishdir {
+	content=$1
+
+  find $content/*/ -type d -depth | while read dir 
+  do
+    dirname=$(basename $dir)
+
+    id=${dirname:0:2}
+    sep=${dirname:2:1}
+
+    if ! [[ "$id" =~ ^[0-9]+$ ]] && ! [[ "$sep" = "-" ]] && [[ "$dirname" != "home" ]]  && [[ "$dirname" != "error" ]]
+     then 
+      newname=$(dirname "$dir")/"00-"$dirname
+      mv "$dir" "$newname";
+      echo "+$newname"
+      
+      touch "$newname/default.md"
+    fi
+  done
+}

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+source kirbycli
+
+read -p "What is the Server Name ?" servername
+read -p "Ready to init $servername ?" ok
+
+# lanch kirby installation
+./kirbyinstall $htdocs$servername ${servername:0:10}
+createVhost $servername
+
+# Dropbox symbolic link
+createSharedDir $servername
+
+read -p "Init git prod repository (y/n)?" choice
+case "$choice" in
+  y|Y ) initProdRepo $servername;;
+  n|N ) echo "continue";;
+  * ) echo "invalid";;
+esac

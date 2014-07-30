@@ -2,25 +2,6 @@
 # kirby-refresh
 # USAGE: kirbyrefresh user
 
-function publishdir {
-  find $1/*/ -type d -depth | while read dir 
-  do
-    dirname=$(basename $dir)
-
-    id=${dirname:0:2}
-    sep=${dirname:2:1}
-
-    if ! [[ "$id" =~ ^[0-9]+$ ]] && ! [[ "$sep" = "-" ]] && [[ "$dirname" != "home" ]]  && [[ "$dirname" != "error" ]]
-     then 
-      newname=$(dirname "$dir")/"00-"$dirname
-      mv "$dir" "$newname";
-      echo "+$newname"
-      
-      touch "$newname/default.md"
-    fi
-  done
-}
-
 echo "- sanitize filenames"
 detox -vr content
 
