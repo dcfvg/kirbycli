@@ -10,10 +10,13 @@ _kirbycli_ can be launch on local machine or on online private server. It's not 
 - install fields, plugins and templates
 - clone few libraries (jquery, bootstrap)
 - create admin account
+
 ****
+
 - create apache vhost 
 - create git bare repos to push online
 - create Dropbox share folder
+
 ****
 
 - publish any folder recursively
