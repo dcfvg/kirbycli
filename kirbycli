@@ -1,3 +1,4 @@
+#!/bin/bash
 # kirby cli
 
 htdocs="/var/www/"

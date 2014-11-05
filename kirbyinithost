@@ -6,7 +6,13 @@ read -p "What is the Server Name ?" servername
 read -p "Ready to init $servername ?" ok
 
 # lanch kirby installation
-./kirbyinstall $htdocs$servername ${servername:0:10}
+read -p "Install Kirby from github (y/n)?" choice
+case "$choice" in
+  y|Y ) ./kirbyinstall $htdocs$servername ${servername:0:10};;
+  n|N ) mkdir $htdocs$servername; git init $htdocs$servername ;;
+  * ) echo "invalid";;
+esac
+
 createVhost $servername
 
 # Dropbox symbolic link
